@@ -1,5 +1,6 @@
 export default function App() {
   return (
-    <h2>ToDo List</h2>
+
+      <h1 className="text-pink-dark">ToDo List</h1>
   )
 }
