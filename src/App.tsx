@@ -1,6 +1,13 @@
+import Text from "./components/text";
+
 export default function App() {
   return (
-
-      <h1 className="text-pink-dark">ToDo List</h1>
-  )
+    <div className="flex flex-col gap-2">
+      <Text variant="body-sm-bold" className="text-pink-base">
+        ToDo List
+      </Text>
+      <Text className="text-green-base">ToDo List</Text>
+      <Text variant="body-md-bold">ToDo List</Text>
+    </div>
+  );
 }
