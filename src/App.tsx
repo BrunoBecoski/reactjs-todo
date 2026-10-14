@@ -1,5 +1,6 @@
 import Icon from "./components/icon";
 import Text from "./components/text";
+import Badge from "./components/badge";
 
 import CheckIcon from "./assets/icons/check.svg?react";
 import PencilIcon from "./assets/icons/pencil.svg?react";
@@ -26,6 +27,11 @@ export default function App() {
         <Icon svg={SpinnerIcon} animate />
         <Icon svg={TrashIcon} />
         <Icon svg={XIcon} />
+      </div>
+
+      <div className="flex gap-1">
+        <Badge variant="secondary">5</Badge>
+        <Badge variant="primary">2 de 5</Badge>
       </div>
     </div>
   );
