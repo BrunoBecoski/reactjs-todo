@@ -1,6 +1,7 @@
 import Icon from "./components/icon";
 import Text from "./components/text";
 import Badge from "./components/badge";
+import Button from "./components/button";
 
 import CheckIcon from "./assets/icons/check.svg?react";
 import PencilIcon from "./assets/icons/pencil.svg?react";
@@ -32,6 +33,12 @@ export default function App() {
       <div className="flex gap-1">
         <Badge variant="secondary">5</Badge>
         <Badge variant="primary">2 de 5</Badge>
+      </div>
+
+      <div>
+        <Button variant="primary" icon={PlusIcon}>
+          Nova Tarefa
+        </Button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import Text from "./text";
 
-export const badgeVariant = cva(
+export const badgeVariants = cva(
   "inline-flex items-center justify-center rounded-full",
   {
     variants: {
@@ -22,7 +22,7 @@ export const badgeVariant = cva(
   },
 );
 
-export const badgeTextVariant = cva("", {
+export const badgeTextVariants = cva("", {
   variants: {
     variant: {
       primary: "text-green-dark",
@@ -35,7 +35,7 @@ export const badgeTextVariant = cva("", {
 });
 
 interface BadgeProps
-  extends ComponentProps<"div">, VariantProps<typeof badgeVariant> {}
+  extends ComponentProps<"div">, VariantProps<typeof badgeVariants> {}
 
 export default function Badge({
   variant,
@@ -45,8 +45,8 @@ export default function Badge({
   ...props
 }: BadgeProps) {
   return (
-    <div className={badgeVariant({ variant, size, className })} {...props}>
-      <Text variant="body-sm-bold" className={badgeTextVariant({ variant })}>
+    <div className={badgeVariants({ variant, size, className })} {...props}>
+      <Text variant="body-sm-bold" className={badgeTextVariants({ variant })}>
         {children}
       </Text>
     </div>
