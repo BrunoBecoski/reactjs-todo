@@ -55,9 +55,9 @@ interface ButtonIconProps
 export default function ButtonIcon({
   variant,
   size,
-  disabled = false,
   className,
   icon,
+  disabled = false,
   ...props
 }: ButtonIconProps) {
   return (
