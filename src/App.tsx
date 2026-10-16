@@ -4,6 +4,7 @@ import Badge from "./components/badge";
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
 import InputText from "./components/input-text";
+import InputCheckbox from "./components/input-checkbox";
 
 import CheckIcon from "./assets/icons/check.svg?react";
 import PencilIcon from "./assets/icons/pencil.svg?react";
@@ -49,6 +50,11 @@ export default function App() {
 
       <div>
         <InputText />
+      </div>
+
+      <div className="flex gap-1">
+        <InputCheckbox />
+        <InputCheckbox checked />
       </div>
     </div>
   );
