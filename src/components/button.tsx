@@ -51,7 +51,6 @@ export const buttonTextVariants = cva("", {
       md: "text-base",
     },
   },
-
   defaultVariants: {
     variant: "primary",
     size: "md",

@@ -14,7 +14,6 @@ export const inputTextVariants = cva(
         true: "pointer-events-none",
       },
     },
-
     defaultVariants: {
       size: "md",
       disabled: true,
