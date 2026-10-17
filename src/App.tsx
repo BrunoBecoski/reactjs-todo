@@ -5,6 +5,7 @@ import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
 import InputText from "./components/input-text";
 import InputCheckbox from "./components/input-checkbox";
+import Card from "./components/card";
 
 import CheckIcon from "./assets/icons/check.svg?react";
 import PencilIcon from "./assets/icons/pencil.svg?react";
@@ -55,6 +56,10 @@ export default function App() {
       <div className="flex gap-1">
         <InputCheckbox />
         <InputCheckbox checked />
+      </div>
+
+      <div>
+        <Card size="md">ToDo List</Card>
       </div>
     </div>
   );
