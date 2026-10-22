@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { cx } from "class-variance-authority";
 
+import { TaskState, type Task } from "../models/task";
 import ButtonIcon from "../components/button-icon";
 import Card from "../components/card";
 import InputCheckbox from "../components/input-checkbox";
@@ -11,8 +13,12 @@ import XIcon from "../assets/icons/x.svg?react";
 import CheckIcon from "../assets/icons/check.svg?react";
 import InputText from "../components/input-text";
 
-export default function TasksItem() {
-  const [isEditing, setIsEditing] = useState(false);
+interface TaskItemProps {
+  task: Task;
+}
+
+export default function TaskItem({ task }: TaskItemProps) {
+  const [isEditing, setIsEditing] = useState(task.state === TaskState.Creating);
 
   function handleEditTask() {
     setIsEditing(true);
@@ -26,9 +32,18 @@ export default function TasksItem() {
     <Card size="md" className="flex items-center gap-4">
       {!isEditing ? (
         <>
-          <InputCheckbox />
+          <InputCheckbox
+            value={task.concluded?.toString()}
+            checked={task?.concluded}
+          />
 
-          <Text className="flex-1">🐕 Levar a Hannah pra passear</Text>
+          <Text
+            className={cx("flex-1", {
+              "line-through": task?.concluded,
+            })}
+          >
+            {task.title}
+          </Text>
 
           <div className="flex gap-1">
             <ButtonIcon icon={TrashIcon} variant="tertiary" />
@@ -41,7 +56,7 @@ export default function TasksItem() {
         </>
       ) : (
         <>
-          <InputText className="flex-1" value="🐕 Levar a Hannah pra passear" />
+          <InputText className="flex-1" defaultValue={task.title} />
 
           <div className="flex gap-1">
             <ButtonIcon
