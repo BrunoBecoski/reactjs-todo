@@ -2,9 +2,9 @@ import type { ComponentProps } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import Icon from "./icon";
+import Skeleton from "./skeleton";
 
 import CheckIcon from "../assets/icons/check.svg?react";
-import Skeleton from "./skeleton";
 
 export const inputCheckboxWrapperVariants = cva(
   "inline-flex items-center cursor-pointer justify-center relative group",

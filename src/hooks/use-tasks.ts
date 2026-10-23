@@ -1,15 +1,16 @@
 import useLocalStorageState from "use-local-storage-state";
 
-import { TASKS_KEY, type Task } from "../models/task";
+import { TASKS_KEY, TaskState, type Task } from "../models/task";
 
 export default function useTasks() {
-  const [tasks, setTasks] = useLocalStorageState<Task[]>(TASKS_KEY, {
+  const [tasks] = useLocalStorageState<Task[]>(TASKS_KEY, {
     defaultValue: [],
   });
 
   return {
     tasks,
-    tasksCount: tasks.length,
+    createdTasksCount: tasks.filter((task) => task.state === TaskState.Created)
+      .length,
     concludedTasksCount: tasks.filter((task) => task.concluded).length,
   };
 }
