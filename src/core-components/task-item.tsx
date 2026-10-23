@@ -1,17 +1,18 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { cx } from "class-variance-authority";
 
+import useTask from "../hooks/use-task";
 import { TaskState, type Task } from "../models/task";
 import ButtonIcon from "../components/button-icon";
 import Card from "../components/card";
 import InputCheckbox from "../components/input-checkbox";
 import Text from "../components/text";
+import InputText from "../components/input-text";
 
 import TrashIcon from "../assets/icons/trash.svg?react";
 import PencilIcon from "../assets/icons/pencil.svg?react";
 import XIcon from "../assets/icons/x.svg?react";
 import CheckIcon from "../assets/icons/check.svg?react";
-import InputText from "../components/input-text";
 
 interface TaskItemProps {
   task: Task;
@@ -19,7 +20,9 @@ interface TaskItemProps {
 
 export default function TaskItem({ task }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(task.state === TaskState.Creating);
-  const [taskTitle, setTaskTitle] = useState("");
+  const [taskTitle, setTaskTitle] = useState(task.title);
+
+  const { updateTask } = useTask();
 
   function handleEditTask() {
     setIsEditing(true);
@@ -35,10 +38,9 @@ export default function TaskItem({ task }: TaskItemProps) {
 
   function handleSaveTask(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log({
-      id: task.id,
-      title: taskTitle,
-    });
+
+    updateTask(task.id, { title: taskTitle });
+
     setIsEditing(false);
   }
 
@@ -75,6 +77,7 @@ export default function TaskItem({ task }: TaskItemProps) {
             onChange={handleChangeTaskTitle}
             required
             autoFocus
+            value={taskTitle}
           />
 
           <div className="flex gap-1">
